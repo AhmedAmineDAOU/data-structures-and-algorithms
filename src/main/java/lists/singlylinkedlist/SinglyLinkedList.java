@@ -19,7 +19,30 @@ public class SinglyLinkedList {
 
         public ListNode(int data) {
             this.data = data;
+            this.next = null;
         }
+    }
+
+    public void display() {
+        ListNode iterator = head;
+        while (iterator != null) {
+            System.out.print(iterator.data + "-->");
+            iterator = iterator.next;
+        }
+        System.out.print("null");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        list.head.next = second;
+        second.next = third;
+        third.next = fourth;
+        list.display();
     }
 
 }
