@@ -33,6 +33,51 @@ public class SinglyLinkedList {
         System.out.println();
     }
 
+    public int getLength() {
+        int length = 0;
+        ListNode iterator = head;
+        while (iterator != null) {
+            length++;
+            iterator = iterator.next;
+        }
+        return length;
+    }
+
+    public void insertNodeAtBeginning(int value) {
+        ListNode newNode = new ListNode(value);
+        newNode.next = head;
+        this.head = newNode;
+    }
+
+    public void insertNodeAtEnd(int value) {
+        ListNode newNode = new ListNode(value);
+        if (this.head == null) {
+            head = newNode;
+            return;
+        }
+        ListNode iterator = head;
+        while (iterator.next != null) {
+            iterator = iterator.next;
+        }
+        iterator.next = newNode;
+    }
+
+    public void insertNodeAtPosition(int value, int position) {
+        ListNode newNode = new ListNode(value);
+        if (position == 1) {
+            insertNodeAtBeginning(value);
+        } else {
+            ListNode previous = head;
+            int itPos = 1;
+            while (itPos < position - 1) {
+                itPos++;
+                previous = previous.next;
+            }
+            newNode.next = previous.next;
+            previous.next = newNode;
+        }
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
         list.head = new ListNode(1);
@@ -42,6 +87,14 @@ public class SinglyLinkedList {
         list.head.next = second;
         second.next = third;
         third.next = fourth;
+        list.display();
+        int length = list.getLength();
+        System.out.println("Length: " + length);
+        list.insertNodeAtBeginning(0);
+        list.display();
+        list.insertNodeAtEnd(5);
+        list.display();
+        list.insertNodeAtPosition(-1, 1);
         list.display();
     }
 
