@@ -119,6 +119,16 @@ public class SinglyLinkedList {
             return nodeToDelete.data;
         }
     }
+    public boolean find(int value) {
+        ListNode iterator = head;
+        while (iterator != null) {
+            if (iterator.data == value) {
+                return true;
+            }
+            iterator = iterator.next;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
@@ -141,6 +151,7 @@ public class SinglyLinkedList {
         int data = list.deleteNodeFromGivenPosition(2);
         System.out.println(data);
         list.display();
+        System.out.println(list.find(-10));
     }
 
 }
