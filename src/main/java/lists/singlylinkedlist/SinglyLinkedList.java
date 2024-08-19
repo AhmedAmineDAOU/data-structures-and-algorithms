@@ -102,6 +102,24 @@ public class SinglyLinkedList {
         return newLastNode.data;
     }
 
+    public int deleteNodeFromGivenPosition(int position) {
+        if (head == null) {
+            return
+                    Integer.MIN_VALUE;
+        }
+        ListNode iterator = head;
+        int deletedData = iterator.data;
+        int itpos = 0;
+        while (itpos < position - 1) {
+            ListNode nodeToDelete = iterator.next;
+            iterator.next = nodeToDelete.next;
+            itpos++;
+            iterator = iterator.next;
+            deletedData = nodeToDelete.data;
+        }
+        return deletedData;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
         list.head = new ListNode(1);
@@ -120,13 +138,9 @@ public class SinglyLinkedList {
         list.display();
         list.insertNodeAtPosition(-1, 2);
         list.display();
-        int deletedData = list.deleteFirst();
-        System.out.println(deletedData);
+        int data = list.deleteNodeFromGivenPosition(2);
+        System.out.println(data);
         list.display();
-        int deletedLastData =list.deleteLast();
-        System.out.println(deletedLastData);
-        list.display();
-
     }
 
 }
