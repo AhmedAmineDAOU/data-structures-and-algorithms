@@ -1,5 +1,8 @@
 package lists.singlylinkedlist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SinglyLinkedList {
 //    Singly Linked List
 //
@@ -130,28 +133,17 @@ public class SinglyLinkedList {
         return false;
     }
 
+    public List<Integer> toList() {
+        List<Integer> result = new ArrayList<>();
+        ListNode current = head;
+        while (current != null) {
+            result.add(current.data);
+            current = current.next;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        SinglyLinkedList list = new SinglyLinkedList();
-        list.head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode fourth = new ListNode(4);
-        list.head.next = second;
-        second.next = third;
-        third.next = fourth;
-//        list.display();
-        int length = list.getLength();
-//        System.out.println("Length: " + length);
-        list.insertNodeAtBeginning(0);
-//        list.display();
-        list.insertNodeAtEnd(5);
-//        list.display();
-        list.insertNodeAtPosition(88, 2);
-        list.display();
-        int data = list.deleteNodeFromGivenPosition(2);
-        System.out.println(data);
-        list.display();
-        System.out.println(list.find(-10));
     }
 
 }
