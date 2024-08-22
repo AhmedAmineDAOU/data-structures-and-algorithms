@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,7 +44,7 @@ public class SinglyLinkedListTest {
         list.insertNodeAtBeginning(10);
         list.insertNodeAtBeginning(20);
         list.deleteFirst();
-        assertEquals(Arrays.asList(10), list.toList());
+        assertEquals(List.of(10), list.toList());
     }
 
     @Test
@@ -51,7 +52,7 @@ public class SinglyLinkedListTest {
         list.insertNodeAtBeginning(10);
         list.insertNodeAtBeginning(20);
         list.deleteLast();
-        assertEquals(Arrays.asList(20), list.toList());
+        assertEquals(List.of(20), list.toList());
     }
 
     @Test
@@ -76,5 +77,15 @@ public class SinglyLinkedListTest {
         assertFalse(list.find(10));
         list.insertNodeAtBeginning(10);
         assertTrue(list.find(10));
+    }
+
+    @Test
+    public void testReverseList() {
+        list.insertNodeAtBeginning(10);
+        list.insertNodeAtBeginning(20);
+        list.insertNodeAtBeginning(30);
+        list.reverseList();
+        assertEquals(Arrays.asList(10, 20, 30), list.toList());
+
     }
 }

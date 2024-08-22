@@ -16,6 +16,35 @@ public class SinglyLinkedList {
 
     private ListNode head;
 
+    public ListNode reverseList() {
+        if (head == null) {
+            return null;
+        }
+        ListNode current = head;
+        ListNode prev = null;
+        ListNode next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
+    public ListNode findMiddleNode() {
+        if (head == null) {
+            return null;
+        }
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+        while (fastPointer != null && fastPointer.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+        return slowPointer;
+    }
+
     private static class ListNode {
         private int data;
         private ListNode next;
@@ -122,6 +151,7 @@ public class SinglyLinkedList {
             return nodeToDelete.data;
         }
     }
+
     public boolean find(int value) {
         ListNode iterator = head;
         while (iterator != null) {
@@ -144,6 +174,15 @@ public class SinglyLinkedList {
     }
 
     public static void main(String[] args) {
+        SinglyLinkedList sl = new SinglyLinkedList();
+        sl.insertNodeAtBeginning(5);
+        sl.insertNodeAtBeginning(3);
+        sl.insertNodeAtBeginning(2);
+        sl.insertNodeAtBeginning(1);
+        sl.display();
+        ListNode middleNode = sl.findMiddleNode();
+        System.out.println(middleNode.data);
+
     }
 
 }
