@@ -4,6 +4,7 @@ package lists.singlylinkedlist;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,12 +81,23 @@ public class SinglyLinkedListTest {
     }
 
     @Test
+    public void testToList(){
+        list.insertNodeAtBeginning(10);
+        list.insertNodeAtBeginning(20);
+        list.insertNodeAtBeginning(30);
+
+        assertEquals(Arrays.asList(30,20,10),list.toList());
+
+    }
+
+    @Test
     public void testReverseList() {
         list.insertNodeAtBeginning(10);
         list.insertNodeAtBeginning(20);
         list.insertNodeAtBeginning(30);
-        list.reverseList();
+
         assertEquals(Arrays.asList(10, 20, 30), list.toList());
+
 
     }
 }

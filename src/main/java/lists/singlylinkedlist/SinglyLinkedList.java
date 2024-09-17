@@ -17,19 +17,8 @@ public class SinglyLinkedList {
     private ListNode head;
 
     public ListNode reverseList() {
-        if (head == null) {
-            return null;
-        }
-        ListNode current = head;
-        ListNode prev = null;
-        ListNode next = null;
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-        return prev;
+        //reimplement
+        return null;
     }
 
     public ListNode findMiddleNode() {
